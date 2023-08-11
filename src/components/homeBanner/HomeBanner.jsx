@@ -16,7 +16,7 @@ const HomeBanner = () => {
         ></video>
       </div>
       {/* OVERLY PART */}
-      <div className="bg-[#ff084e] bg-opacity-20 absolute w-full top-0 text-white h-full flex items-center justify-center">
+      <div className="bg-[#3a3a3a] bg-opacity-50 absolute w-full top-0 text-white h-full flex items-center justify-center">
         <div className="w-1/2 text-center space-y-4">
           <span className="font-bold text-2xl md:text-3xl">Up To</span>
           <h1 className="text-8xl font-bold text-white">70% OFF</h1>

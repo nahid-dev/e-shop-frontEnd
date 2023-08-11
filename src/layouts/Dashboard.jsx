@@ -1,8 +1,7 @@
 import React, { useState } from "react";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, Outlet } from "react-router-dom";
 import "./Dashboard.css";
 import { BsCart4 } from "react-icons/bs";
-import SectionHeader from "../components/sectionHeader/SectionHeader";
 import Hamburger from "hamburger-react";
 
 const Dashboard = () => {
@@ -11,7 +10,15 @@ const Dashboard = () => {
     <>
       <li>
         <NavLink
-          to="/dashboard"
+          to="/dashboard/overview"
+          className={({ isActive }) => (isActive ? "active" : "default")}
+        >
+          Overview
+        </NavLink>
+      </li>
+      <li>
+        <NavLink
+          to="/dashboard/customerList"
           className={({ isActive }) => (isActive ? "active" : "default")}
         >
           Customer List
@@ -19,7 +26,7 @@ const Dashboard = () => {
       </li>
       <li>
         <NavLink
-          to="/orderList"
+          to="/dashboard/orderList"
           className={({ isActive }) => (isActive ? "active" : "default")}
         >
           Order List
@@ -27,7 +34,7 @@ const Dashboard = () => {
       </li>
       <li>
         <NavLink
-          to="/productList"
+          to="/dashboard/productList"
           className={({ isActive }) => (isActive ? "active" : "default")}
         >
           Product List
@@ -103,9 +110,7 @@ const Dashboard = () => {
         </div>
 
         {/* CONTENT AREA */}
-        <div className="w-full">
-          <SectionHeader title={"Customer List"}></SectionHeader>
-        </div>
+        <Outlet></Outlet>
       </div>
     </div>
   );

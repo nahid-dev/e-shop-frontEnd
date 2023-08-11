@@ -21,7 +21,7 @@ const Navbar = () => {
         <li>
           <NavLink
             className={({ isActive }) => (isActive ? "active" : "default")}
-            to="/dashboard"
+            to="/dashboard/overview"
           >
             Dashboard
           </NavLink>

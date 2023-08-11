@@ -1,3 +1,17 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+.color-one{
+    @apply text-[#ff084e]
+}
+.color-two{
+    @apply text-[#3a3a3a]
+}
+.default{
+    @apply text-[#3a3a3a] font-semibold md:text-lg hover:text-[#ff084e] transition-all duration-200
+}
+.active{
+    @apply text-[#ff084e] font-semibold md:text-lg
+}

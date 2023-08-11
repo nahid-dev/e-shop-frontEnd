@@ -25,12 +25,6 @@ const HomeBanner = () => {
           </button>
         </div>
       </div>
-      {/* BANNER CONTENT */}
-      {/* <div>
-        <div>
-          
-        </div>
-      </div> */}
     </div>
   );
 };

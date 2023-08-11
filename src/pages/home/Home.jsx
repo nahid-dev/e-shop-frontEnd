@@ -4,7 +4,7 @@ import HomeBanner from "../../components/homeBanner/HomeBanner";
 const Home = () => {
   return (
     <div>
-      <h1 className="text-3xl">Home page</h1>
+      {/* BANNER SECTION */}
       <HomeBanner></HomeBanner>
     </div>
   );

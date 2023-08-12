@@ -14,7 +14,7 @@ const AllProduct = () => {
     },
   });
   return (
-    <div className="pb-20">
+    <div id="allProduct" className="pb-20">
       <ContentWrapper>
         <SectionHeader title={"All products"}></SectionHeader>
         <div className="grid grid-cols-1 md:grid-cols-3 md:gap-10">
@@ -29,7 +29,7 @@ const AllProduct = () => {
                     <h4 className="font-semibold text-lg">{product.name}</h4>
                     <p className="font-medium">price: ${product.price}</p>
                     <div className="flex justify-between items-center py-5">
-                      <button className="font-semibold color-one">
+                      <button className="font-semibold color-one hover:shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px] py-2 px-5">
                         Add to Cart{" "}
                       </button>
                       <button className="hover:border-2 border-2  hover:border-[#ff084e] hover:bg-transparent hover:text-[#ff084e] duration-100 transition-all py-2 px-5 bg-[#3a3a3a] text-white font-semibold rounded ">

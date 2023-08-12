@@ -19,10 +19,15 @@ const HomeBanner = () => {
       <div className="bg-[#3a3a3a] bg-opacity-50 absolute w-full top-0 text-white h-full flex items-center justify-center">
         <div className="w-1/2 text-center space-y-4">
           <span className="font-bold text-2xl md:text-3xl">Up To</span>
-          <h1 className="text-8xl font-bold text-white">70% OFF</h1>
-          <button className="border-2 border-white rounded px-2 md:px-5 py-1 md:py-2 font-bold hover:bg-[#ff084e] transition-all duration-200">
-            Shop Now
-          </button>
+          <h1 className="text-8xl font-bold text-white mb-5">70% OFF</h1>
+          <div className="pt-3 md:pt-5">
+            <a
+              href="#allProduct"
+              className="border-2 border-white rounded px-2 md:px-5 py-1 md:py-2 font-bold hover:bg-[#ff084e] transition-all duration-200 "
+            >
+              Shop Now
+            </a>
+          </div>
         </div>
       </div>
     </div>

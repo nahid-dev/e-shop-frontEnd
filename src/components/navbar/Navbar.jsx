@@ -6,7 +6,7 @@ import Hamburger from "hamburger-react";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const user = true;
+  const user = false;
   const navItem = (
     <>
       <li>

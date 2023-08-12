@@ -5,10 +5,13 @@ import { BsCart4 } from "react-icons/bs";
 import Hamburger from "hamburger-react";
 import { AuthContext } from "../../Provider/AuthProvider";
 import { toast } from "react-hot-toast";
+import useAdmin from "../../hooks/useAdmin";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const { user, logOut } = useContext(AuthContext);
+  const [isAdmin] = useAdmin();
+  console.log(isAdmin);
 
   const handleLogOut = () => {
     logOut()
@@ -29,7 +32,7 @@ const Navbar = () => {
           Home
         </NavLink>
       </li>
-      {user && (
+      {isAdmin && (
         <li>
           <NavLink
             className={({ isActive }) => (isActive ? "active" : "default")}

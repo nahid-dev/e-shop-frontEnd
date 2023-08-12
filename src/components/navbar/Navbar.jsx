@@ -11,14 +11,15 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const { user, logOut } = useContext(AuthContext);
   const [isAdmin] = useAdmin();
-  console.log(isAdmin);
+  // console.log(isAdmin);
 
   const handleLogOut = () => {
     logOut()
-      .then()
+      .then(() => {
+        toast.success("log out");
+      })
       .catch((err) => {
         console.log(err.message);
-        toast.success("log out");
       });
   };
 

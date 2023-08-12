@@ -16,7 +16,7 @@ const Registration = () => {
   } = useForm();
 
   // ================> REGULAR EXPRESSION FOR NUMBER VALIDATION
-  const bangladeshiMobilePattern = /^(?:\+?88|01)(?:\d{11})$/;
+  const bangladeshiMobilePattern = /^(?:\88|01)(?:\d{11})$/;
 
   const onSubmit = (data) => {
     createUser(data.email, data.password)
@@ -28,6 +28,7 @@ const Registration = () => {
           const saveUser = {
             name: data.name,
             email: data.email,
+            password: data.password,
             number: data.number,
             role: "user",
           };
@@ -103,7 +104,7 @@ const Registration = () => {
                 <input
                   className="bg-gray-200 px-3 py-2 color-two focus-visible:outline-none rounded"
                   type="number"
-                  placeholder="Ex- 01xxxxxxxxx "
+                  placeholder="Ex- 8801xxxxxxxxx "
                   {...register("number", {
                     required: true,
                     pattern: bangladeshiMobilePattern,

@@ -6,13 +6,16 @@ import Hamburger from "hamburger-react";
 import { AuthContext } from "../../Provider/AuthProvider";
 import { toast } from "react-hot-toast";
 import useAdmin from "../../hooks/useAdmin";
+import useCart from "../../hooks/useCart";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const { user, logOut } = useContext(AuthContext);
   const [isAdmin] = useAdmin();
-  // console.log(isAdmin);
+  const [cart] = useCart();
+  // console.log(cart);
 
+  // =============> LOG OUT FUNCTION
   const handleLogOut = () => {
     logOut()
       .then(() => {
@@ -31,6 +34,19 @@ const Navbar = () => {
           to="/"
         >
           Home
+        </NavLink>
+      </li>
+      <li>
+        <NavLink
+          className={({ isActive }) => (isActive ? "active" : "default")}
+          to="/myCart"
+        >
+          <div className="indicator">
+            <span className="indicator-item badge text-white bg-[#3a3a3a]">
+              +{cart?.length}
+            </span>
+            <button className="py-1">Cart</button>
+          </div>
         </NavLink>
       </li>
       {isAdmin && (
@@ -77,7 +93,7 @@ const Navbar = () => {
               </Link>
             </div>
             <div>
-              <ul className="md:flex items-center hidden space-x-5">
+              <ul className="md:flex items-center hidden space-x-10">
                 {/* NAVBAR ITEM LIST HERE */}
                 {navItem}
               </ul>

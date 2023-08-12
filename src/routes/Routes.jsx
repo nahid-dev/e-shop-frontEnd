@@ -10,6 +10,7 @@ import ProductDetails from "../components/productDetails/ProductDetails";
 import Registration from "../pages/register/Registration";
 import Login from "../pages/login/Login";
 import DetailsView from "../pages/detailsView/DetailsView";
+import MyCart from "../pages/myCart/MyCart";
 
 const router = createBrowserRouter([
   {
@@ -31,6 +32,10 @@ const router = createBrowserRouter([
       {
         path: "/detailsView/:id",
         element: <DetailsView></DetailsView>,
+      },
+      {
+        path: "/myCart",
+        element: <MyCart></MyCart>,
       },
     ],
   },

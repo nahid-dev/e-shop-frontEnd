@@ -42,6 +42,7 @@ const Login = () => {
             })
             .catch((err) => {
               console.log(err.message);
+              toast.error("password not match");
             });
         } else {
           toast.error("number not match");

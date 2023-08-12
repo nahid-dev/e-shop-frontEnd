@@ -1,11 +1,18 @@
 import { useQuery } from "@tanstack/react-query";
-import React from "react";
+import React, { useContext } from "react";
 import ContentWrapper from "../shared/contentWrapper/ContentWrapper";
 import SectionHeader from "../sectionHeader/SectionHeader";
 import Loader from "../loader/Loader";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { AuthContext } from "../../Provider/AuthProvider";
+import { toast } from "react-hot-toast";
+import useCart from "../../hooks/useCart";
 
 const AllProduct = () => {
+  const { user } = useContext(AuthContext);
+  const navigate = useNavigate();
+  const [, refetch] = useCart();
+
   const { data: products = [], isLoading: productLoading } = useQuery({
     queryKey: ["products"],
     queryFn: async () => {
@@ -14,6 +21,40 @@ const AllProduct = () => {
       return data;
     },
   });
+
+  // ADD TO CART PRODUCT FUNCTION
+  const handleAddToCart = (product) => {
+    const addCart = {
+      productId: product._id,
+      name: product.name,
+      image: product.image,
+      desc: product.desc,
+      price: product.price,
+      rating: product.rating,
+      email: user.email,
+    };
+    // console.log(addCart);
+    if (user) {
+      fetch("http://localhost:5000/addCart", {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(addCart),
+      })
+        .then((res) => res.json())
+        .then(() => {
+          toast.success("added to cart");
+          refetch();
+        })
+        .catch(() => {
+          toast.error("already added");
+        });
+    } else {
+      toast.error("login first");
+      navigate("/login");
+    }
+  };
   return (
     <div id="allProduct" className="pb-20">
       <ContentWrapper>
@@ -30,7 +71,10 @@ const AllProduct = () => {
                     <h4 className="font-semibold text-lg">{product.name}</h4>
                     <p className="font-medium">price: ${product.price}</p>
                     <div className="flex justify-between items-center py-5">
-                      <button className="font-semibold color-one hover:shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px] py-2 px-5">
+                      <button
+                        onClick={() => handleAddToCart(product)}
+                        className="font-semibold color-one hover:shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px] py-2 px-5"
+                      >
                         Add to Cart{" "}
                       </button>
                       <Link

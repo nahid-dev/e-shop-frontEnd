@@ -3,6 +3,7 @@ import React from "react";
 import ContentWrapper from "../shared/contentWrapper/ContentWrapper";
 import SectionHeader from "../sectionHeader/SectionHeader";
 import Loader from "../loader/Loader";
+import { Link } from "react-router-dom";
 
 const AllProduct = () => {
   const { data: products = [], isLoading: productLoading } = useQuery({
@@ -24,7 +25,7 @@ const AllProduct = () => {
             products.map((product) => (
               <div className="mb-10 md:mb-0" key={product._id}>
                 <div className="hover:shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px] duration-300">
-                  <img className="" src={product.image} alt="" />
+                  <img className="w-full" src={product.image} alt="" />
                   <div className="p-3 md:p-5">
                     <h4 className="font-semibold text-lg">{product.name}</h4>
                     <p className="font-medium">price: ${product.price}</p>
@@ -32,9 +33,12 @@ const AllProduct = () => {
                       <button className="font-semibold color-one hover:shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px] py-2 px-5">
                         Add to Cart{" "}
                       </button>
-                      <button className="hover:border-2 border-2  hover:border-[#ff084e] hover:bg-transparent hover:text-[#ff084e] duration-100 transition-all py-2 px-5 bg-[#3a3a3a] text-white font-semibold rounded ">
+                      <Link
+                        to={`/detailsView/${product._id}`}
+                        className="hover:border-2 border-2  hover:border-[#ff084e] hover:bg-transparent hover:text-[#ff084e] duration-100 transition-all py-2 px-5 bg-[#3a3a3a] text-white font-semibold rounded "
+                      >
                         Details
-                      </button>
+                      </Link>
                     </div>
                   </div>
                 </div>

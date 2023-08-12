@@ -9,6 +9,7 @@ import OrderList from "../pages/orderList/OrderList";
 import ProductDetails from "../components/productDetails/ProductDetails";
 import Registration from "../pages/register/Registration";
 import Login from "../pages/login/Login";
+import DetailsView from "../pages/detailsView/DetailsView";
 
 const router = createBrowserRouter([
   {
@@ -26,6 +27,10 @@ const router = createBrowserRouter([
       {
         path: "/login",
         element: <Login></Login>,
+      },
+      {
+        path: "/detailsView/:id",
+        element: <DetailsView></DetailsView>,
       },
     ],
   },

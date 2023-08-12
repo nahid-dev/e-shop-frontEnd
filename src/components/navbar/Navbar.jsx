@@ -1,12 +1,24 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import ContentWrapper from "../../components/shared/contentWrapper/ContentWrapper";
 import { Link, NavLink } from "react-router-dom";
 import { BsCart4 } from "react-icons/bs";
 import Hamburger from "hamburger-react";
+import { AuthContext } from "../../Provider/AuthProvider";
+import { toast } from "react-hot-toast";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const user = false;
+  const { user, logOut } = useContext(AuthContext);
+
+  const handleLogOut = () => {
+    logOut()
+      .then()
+      .catch((err) => {
+        console.log(err.message);
+        toast.success("log out");
+      });
+  };
+
   const navItem = (
     <>
       <li>
@@ -29,7 +41,9 @@ const Navbar = () => {
       )}
       {user ? (
         <li className="font-semibold md:text-lg bg-[#ff084e] text-white rounded px-2">
-          <Link to="">Logout</Link>
+          <Link onClick={handleLogOut} to="">
+            Logout
+          </Link>
         </li>
       ) : (
         <li>

@@ -1,7 +1,40 @@
 import React from "react";
 import SectionHeader from "../../components/sectionHeader/SectionHeader";
+import CountUp from "react-countup";
+import { FaUsers } from "react-icons/fa";
+import { useQuery } from "@tanstack/react-query";
+import { BsFillCartCheckFill, BsShop } from "react-icons/bs";
 
 const Overview = () => {
+  // =================> TOTAL CUSTOMER
+  const { data: totalCustomer = [] } = useQuery({
+    queryKey: ["totalCustomer"],
+    queryFn: async () => {
+      const res = await fetch("http://localhost:5000/totalCustomer");
+      const data = await res.json();
+      return data;
+    },
+  });
+
+  // =================> TOTAL PRODUCT
+  const { data: totalProduct = [] } = useQuery({
+    queryKey: ["totalProduct"],
+    queryFn: async () => {
+      const res = await fetch("http://localhost:5000/totalProduct");
+      const data = await res.json();
+      return data;
+    },
+  });
+
+  // =================> TOTAL ORDER
+  const { data: totalOrder = [] } = useQuery({
+    queryKey: ["totalOrder"],
+    queryFn: async () => {
+      const res = await fetch("http://localhost:5000/totalOrder");
+      const data = await res.json();
+      return data;
+    },
+  });
   return (
     <div>
       <SectionHeader title={"Overview"}></SectionHeader>
@@ -9,63 +42,67 @@ const Overview = () => {
       <div className="flex justify-center pt-5 md:pt-10">
         <div className="stats shadow-md stats-vertical md:stats-horizontal">
           <div className="stat">
-            <div className="stat-figure text-secondary">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                className="inline-block w-8 h-8 stroke-current"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-                ></path>
-              </svg>
+            <div className="stat-figure color-one">
+              <FaUsers size={32}></FaUsers>
             </div>
             <div className="stat-title">Total Customers</div>
-            <div className="stat-value">31K</div>
+            <div className="stat-value flex gap-2">
+              <CountUp
+                start={0}
+                end={totalCustomer?.length}
+                delay={0}
+                duration={8}
+              >
+                {({ countUpRef }) => (
+                  <div>
+                    <span ref={countUpRef} />
+                  </div>
+                )}
+              </CountUp>
+              <span className="text-2xl">person</span>
+            </div>
           </div>
 
           <div className="stat">
-            <div className="stat-figure text-secondary">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                className="inline-block w-8 h-8 stroke-current"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"
-                ></path>
-              </svg>
+            <div className="stat-figure color-one">
+              <BsFillCartCheckFill size={32}></BsFillCartCheckFill>
             </div>
             <div className="stat-title">Total Order</div>
-            <div className="stat-value">4,200</div>
+            <div className="stat-value">
+              <CountUp
+                start={0}
+                end={totalOrder?.length}
+                delay={0}
+                duration={8}
+              >
+                {({ countUpRef }) => (
+                  <div>
+                    <span ref={countUpRef} />
+                  </div>
+                )}
+              </CountUp>
+            </div>
           </div>
 
           <div className="stat">
-            <div className="stat-figure text-secondary">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                className="inline-block w-8 h-8 stroke-slate-500"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4"
-                ></path>
-              </svg>
+            <div className="stat-figure color-one">
+              <BsShop size={32}></BsShop>
             </div>
             <div className="stat-title">Total Product</div>
-            <div className="stat-value">1,200</div>
+            <div className="stat-value">
+              <CountUp
+                start={0}
+                end={totalProduct?.length}
+                delay={0}
+                duration={8}
+              >
+                {({ countUpRef }) => (
+                  <div>
+                    <span ref={countUpRef} />
+                  </div>
+                )}
+              </CountUp>
+            </div>
           </div>
         </div>
       </div>

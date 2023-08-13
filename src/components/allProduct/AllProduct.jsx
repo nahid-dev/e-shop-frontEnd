@@ -24,17 +24,17 @@ const AllProduct = () => {
 
   // ADD TO CART PRODUCT FUNCTION
   const handleAddToCart = (product) => {
-    const addCart = {
-      productId: product._id,
-      name: product.name,
-      image: product.image,
-      desc: product.desc,
-      price: product.price,
-      rating: product.rating,
-      email: user.email,
-    };
     // console.log(addCart);
     if (user) {
+      const addCart = {
+        productId: product._id,
+        name: product.name,
+        image: product.image,
+        desc: product.desc,
+        price: product.price,
+        rating: product.rating,
+        email: user.email,
+      };
       fetch("http://localhost:5000/addCart", {
         method: "POST",
         headers: {

@@ -10,7 +10,9 @@ const Overview = () => {
   const { data: totalCustomer = [] } = useQuery({
     queryKey: ["totalCustomer"],
     queryFn: async () => {
-      const res = await fetch("http://localhost:5000/totalCustomer");
+      const res = await fetch(
+        "https://site-server-nahid-dev.vercel.app/totalCustomer"
+      );
       const data = await res.json();
       return data;
     },
@@ -20,7 +22,9 @@ const Overview = () => {
   const { data: totalProduct = [] } = useQuery({
     queryKey: ["totalProduct"],
     queryFn: async () => {
-      const res = await fetch("http://localhost:5000/totalProduct");
+      const res = await fetch(
+        "https://site-server-nahid-dev.vercel.app/totalProduct"
+      );
       const data = await res.json();
       return data;
     },
@@ -30,7 +34,9 @@ const Overview = () => {
   const { data: totalOrder = [] } = useQuery({
     queryKey: ["totalOrder"],
     queryFn: async () => {
-      const res = await fetch("http://localhost:5000/totalOrder");
+      const res = await fetch(
+        "https://site-server-nahid-dev.vercel.app/totalOrder"
+      );
       const data = await res.json();
       return data;
     },

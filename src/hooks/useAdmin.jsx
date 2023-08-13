@@ -11,7 +11,7 @@ const useAdmin = () => {
     enabled: !loading,
     queryFn: async () => {
       const res = await axiosSecure.get(
-        `http://localhost:5000/admin/${user?.email}`
+        `https://site-server-nahid-dev.vercel.app/admin/${user?.email}`
       );
       return res.data.admin;
     },

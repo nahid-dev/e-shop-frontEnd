@@ -12,7 +12,7 @@ const CartItemList = ({ item, index, refetch }) => {
       name: item.name,
       id: item._id,
     };
-    fetch("http://localhost:5000/checkout", {
+    fetch("https://site-server-nahid-dev.vercel.app/checkout", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -29,7 +29,7 @@ const CartItemList = ({ item, index, refetch }) => {
 
   // ===============> HANDLE DELETE ITEM
   const handleDeleteClass = (id) => {
-    fetch(`http://localhost:5000/deleteItem/${id}`, {
+    fetch(`https://site-server-nahid-dev.vercel.app/deleteItem/${id}`, {
       method: "DELETE",
     })
       .then((res) => res.json())

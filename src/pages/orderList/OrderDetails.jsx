@@ -11,7 +11,9 @@ const OrderDetails = () => {
   const { data: orderDetails = {}, isLoading: orderLoading } = useQuery({
     queryKey: ["OrderDetails"],
     queryFn: async () => {
-      const res = await fetch(`http://localhost:5000/orderDetails/${id}`);
+      const res = await fetch(
+        `https://site-server-nahid-dev.vercel.app/orderDetails/${id}`
+      );
       const data = await res.json();
       return data;
     },

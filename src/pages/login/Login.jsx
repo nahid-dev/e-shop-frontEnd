@@ -21,7 +21,7 @@ const Login = () => {
       number: data.number,
     };
     // console.log(phoneNumber);
-    fetch("http://localhost:5000/verifyNumber", {
+    fetch("https://site-server-nahid-dev.vercel.app/verifyNumber", {
       method: "PATCH",
       headers: {
         "content-type": "application/json",

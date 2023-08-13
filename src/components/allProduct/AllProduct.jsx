@@ -16,7 +16,9 @@ const AllProduct = () => {
   const { data: products = [], isLoading: productLoading } = useQuery({
     queryKey: ["products"],
     queryFn: async () => {
-      const res = await fetch("http://localhost:5000/products");
+      const res = await fetch(
+        "https://site-server-nahid-dev.vercel.app/products"
+      );
       const data = await res.json();
       return data;
     },
@@ -35,7 +37,7 @@ const AllProduct = () => {
         rating: product.rating,
         email: user.email,
       };
-      fetch("http://localhost:5000/addCart", {
+      fetch("https://site-server-nahid-dev.vercel.app/addCart", {
         method: "POST",
         headers: {
           "content-type": "application/json",

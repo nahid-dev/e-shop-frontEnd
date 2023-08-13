@@ -9,7 +9,9 @@ const OrderList = () => {
   const { data: totalOrder = [], isLoading: orderLoading } = useQuery({
     queryKey: ["totalOrder"],
     queryFn: async () => {
-      const res = await fetch("http://localhost:5000/totalOrder");
+      const res = await fetch(
+        "https://site-server-nahid-dev.vercel.app/totalOrder"
+      );
       const data = await res.json();
       return data;
     },

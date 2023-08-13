@@ -10,7 +10,9 @@ const DetailsView = () => {
   const { data: productDetails = {}, isLoading: detailsLoading } = useQuery({
     queryKey: ["productDetails"],
     queryFn: async () => {
-      const res = await fetch(`http://localhost:5000/singleProduct/${id}`);
+      const res = await fetch(
+        `https://site-server-nahid-dev.vercel.app/singleProduct/${id}`
+      );
       const data = await res.json();
       return data;
     },

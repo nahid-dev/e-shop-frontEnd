@@ -30,7 +30,7 @@ const AddCustomer = () => {
             number: data.number,
             role: "user",
           };
-          fetch("http://localhost:5000/newUser", {
+          fetch("https://site-server-nahid-dev.vercel.app/newUser", {
             method: "POST",
             headers: {
               "content-type": "application/json",

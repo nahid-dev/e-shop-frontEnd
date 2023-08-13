@@ -27,7 +27,7 @@ const Details = ({ product, loading }) => {
         rating: product.rating,
         email: user.email,
       };
-      fetch("http://localhost:5000/addCart", {
+      fetch("https://site-server-nahid-dev.vercel.app/addCart", {
         method: "POST",
         headers: {
           "content-type": "application/json",

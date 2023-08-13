@@ -18,7 +18,7 @@ const ProductList = () => {
 
   console.log(products);
   return (
-    <div>
+    <div className="bg-white">
       <SectionHeader title={"Product list"}></SectionHeader>
 
       {/*========================== TABLE OF PRODUCTS */}

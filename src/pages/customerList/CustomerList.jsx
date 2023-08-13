@@ -18,7 +18,7 @@ const CustomerList = () => {
     },
   });
   return (
-    <div>
+    <div className="">
       <SectionHeader title={"customer list"}></SectionHeader>
 
       {/* ADD CUSTOMER */}

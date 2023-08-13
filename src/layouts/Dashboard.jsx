@@ -43,7 +43,7 @@ const Dashboard = () => {
     </>
   );
   return (
-    <div className="flex">
+    <div className="flex bg-white">
       {/* SIDEBAR LARGE DEVICE */}
       <div className="w-1/6 border h-screen hidden md:block text-center px-2 py-5">
         {/* LOGO */}

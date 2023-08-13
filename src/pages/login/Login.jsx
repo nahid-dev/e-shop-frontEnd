@@ -100,7 +100,7 @@ const Login = () => {
                 <input
                   className="bg-gray-200 px-3 py-2 color-two focus-visible:outline-none rounded"
                   type="number"
-                  placeholder="Ex- 01xxxxxxxxx "
+                  placeholder="Ex- 8801xxxxxxxxx "
                   {...register("number", { required: true })}
                 />
                 {errors.number && (

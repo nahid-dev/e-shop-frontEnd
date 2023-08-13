@@ -59,6 +59,7 @@ const AllProduct = () => {
     <div id="allProduct" className="pb-20">
       <ContentWrapper>
         <SectionHeader title={"All products"}></SectionHeader>
+
         <div className="grid grid-cols-1 md:grid-cols-3 md:gap-10">
           {productLoading ? (
             <Loader loading={productLoading}></Loader>

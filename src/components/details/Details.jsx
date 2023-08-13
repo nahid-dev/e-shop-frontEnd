@@ -1,10 +1,52 @@
-import React from "react";
+import React, { useContext } from "react";
 import Loader from "../loader/Loader";
 import { Rating } from "@smastrom/react-rating";
 import "@smastrom/react-rating/style.css";
+import { AuthContext } from "../../Provider/AuthProvider";
+import { useNavigate } from "react-router-dom";
+import useCart from "../../hooks/useCart";
+import { toast } from "react-hot-toast";
 
 const Details = ({ product, loading }) => {
+  const { user } = useContext(AuthContext);
+  const navigate = useNavigate();
+  const [, refetch] = useCart();
+
   const { image, rating, price, desc, name } = product;
+
+  // ADD TO CART PRODUCT FUNCTION
+  const handleAddToCart = (product) => {
+    // console.log(addCart);
+    if (user) {
+      const addCart = {
+        productId: product._id,
+        name: product.name,
+        image: product.image,
+        desc: product.desc,
+        price: product.price,
+        rating: product.rating,
+        email: user.email,
+      };
+      fetch("http://localhost:5000/addCart", {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(addCart),
+      })
+        .then((res) => res.json())
+        .then(() => {
+          toast.success("added to cart");
+          refetch();
+        })
+        .catch(() => {
+          toast.error("already added");
+        });
+    } else {
+      toast.error("login first");
+      navigate("/login");
+    }
+  };
   return (
     <>
       {loading ? (
@@ -29,7 +71,10 @@ const Details = ({ product, loading }) => {
                 </span>
                 <p className="text-xl font-bold"> ${price}</p>
                 <p className="color-two">{desc}</p>
-                <button className="bg-[#ff084e] px-2 py-1 text-white md:px-4 md:py-2">
+                <button
+                  onClick={() => handleAddToCart(product)}
+                  className="bg-[#ff084e] px-2 py-1 text-white md:px-4 md:py-2"
+                >
                   Add to Cart
                 </button>
               </div>

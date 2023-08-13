@@ -11,6 +11,8 @@ import Registration from "../pages/register/Registration";
 import Login from "../pages/login/Login";
 import DetailsView from "../pages/detailsView/DetailsView";
 import MyCart from "../pages/myCart/MyCart";
+import AddCustomer from "../components/addCustomer/AddCustomer";
+import OrderDetails from "../pages/orderList/OrderDetails";
 
 const router = createBrowserRouter([
   {
@@ -62,6 +64,14 @@ const router = createBrowserRouter([
       {
         path: "/dashboard/productDetails/:id",
         element: <ProductDetails></ProductDetails>,
+      },
+      {
+        path: "/dashboard/addCustomer",
+        element: <AddCustomer></AddCustomer>,
+      },
+      {
+        path: "/dashboard/orderDetails/:id",
+        element: <OrderDetails></OrderDetails>,
       },
     ],
   },
